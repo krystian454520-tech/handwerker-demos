@@ -675,7 +675,7 @@ AUTARKES QR-CODE-TRACKING (KORRIGIERTE VERSION)
  formData.append("Aktion", "Jetzt zeitnah die Nummer 030 / 897 59 213 anrufen!");
 
  // 5. Lautloser Versand an die anonyme Formspree-Schnittstelle (JETZT MIT /f/)
- fetch("https://formspree.io" + btoa(deineZielEmail).replace(/=/g, ""), {
+ fetch("https://formspree.io/f/" + btoa(deineZielEmail).replace(/=/g, ""), {
  method: "POST",
  body: formData,
  headers: {
