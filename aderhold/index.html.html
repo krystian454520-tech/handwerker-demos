@@ -650,38 +650,6 @@ function handleFormSubmit(e) {
 }
 </script>
 
-<!-- ============================================================
- WASSERDICHTES QR-CODE-TRACKING (PER TRACKING-PIXEL)
- ============================================================ -->
-<script>
-(function() {
-  // 1. Prüfen, ob der QR-Code gescannt wurde (?scan=true in der URL)
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('scan') === 'true') {
-    
-    // 2. Deine echte E-Mail-Adresse für den Empfang
-    const zielEmail = "Krystian_Myszk2@hotmail.de";
-    const firmenName = document.title || "Malermeisterei Aderhold";
-    
-    // 3. Ein unsichtbares Tracking-Bild (Pixel) erzeugen
-    const pixel = new Image(1, 1);
-    
-    // 4. Der absolut sichere Versandweg über die Bild-URL
-    // Dies löst die E-Mail direkt und ohne CORS-Blockaden aus
-    pixel.src = "https://formspree.io" + btoa(zielEmail).replace(/=/g, "") + 
-                "?Firma=" + encodeURIComponent(firmenName) + 
-                "&Status=" + encodeURIComponent("Postkarte erfolgreich gescannt!") +
-                "&Aktion=" + encodeURIComponent("Jetzt anrufen unter: 030 / 897 59 213");
-                
-    // Das Bild wird unsichtbar im Hintergrund geladen
-    pixel.style.position = "absolute";
-    pixel.style.top = "-9999px";
-    document.body.appendChild(pixel);
-    
-    console.log("Tracking-Pixel geladen.");
-  }
-})();
-</script>
 
 </body>
 </html>
