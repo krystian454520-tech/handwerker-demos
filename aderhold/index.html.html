@@ -651,42 +651,39 @@ function handleFormSubmit(e) {
 </script>
 
 <!-- ============================================================
-AUTARKES QR-CODE-TRACKING (KORRIGIERTE VERSION)
+AUTARKES QR-CODE-TRACKING (DIREKT-VERSION OHNE FEHLER)
 ============================================================ -->
 <script>
 (function() {
- // 1. Prüfen, ob der QR-Code gescannt wurde (?scan=true in der URL vorhanden)
- const urlParams = new URLSearchParams(window.location.search);
- if (urlParams.get('scan') === 'true') {
- 
- // 2. DEINE ZIEL-EMAIL
- const deineZielEmail = "Krystian_Myszk2@hotmail.de"; 
- 
- // 3. Daten für die Benachrichtigung sammeln
- const firmenName = document.title || "Malermeisterei Aderhold";
- const aktuelleZeit = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
- 
- // 4. Ein unsichtbares Formular-Objekt im Hintergrund erstellen
- const formData = new FormData();
- formData.append("_subject", "🚨 QR-Code Scan: " + firmenName);
- formData.append("Firma", firmenName);
- formData.append("Uhrzeit des Scans", aktuelleZeit);
- formData.append("Status", "Die Postkarte wurde gerade erfolgreich umgedreht und gescannt.");
- formData.append("Aktion", "Jetzt zeitnah die Nummer 030 / 897 59 213 anrufen!");
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('scan') === 'true') {
+    
+    const firmenName = document.title || "Malermeisterei Aderhold";
+    const aktuelleZeit = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    
+    const formData = new FormData();
+    formData.append("_subject", "🚨 QR-Code Scan: " + firmenName);
+    formData.append("Firma", firmenName);
+    formData.append("Uhrzeit des Scans", aktuelleZeit);
+    formData.append("Status", "Die Postkarte wurde gerade erfolgreich umgedreht und gescannt.");
+    formData.append("Aktion", "Jetzt zeitnah die Nummer 030 / 897 59 213 anrufen!");
 
- // 5. Lautloser Versand an die anonyme Formspree-Schnittstelle (JETZT MIT /f/)
- fetch("https://formspree.io/f/" + btoa(deineZielEmail).replace(/=/g, ""), {
- method: "POST",
- body: formData,
- headers: {
- 'Accept': 'application/json'
- }
- })
- .then(response => console.log("Tracking-Signal erfolgreich gesendet."))
- .catch(error => console.error("Tracking-Fehler:", error));
- }
+    // Senden direkt über deine unverschlüsselte E-Mail (Vermeidet btoa-Fehler)
+    fetch("https://formspree.io/f/", {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => console.log("Tracking-Signal erfolgreich gesendet."))
+    .catch(error => console.error("Tracking-Fehler:", error));
+  }
 })();
 </script>
+</body>
+</html>
+
 
 
 
