@@ -650,6 +650,21 @@ function handleFormSubmit(e) {
 }
 </script>
 
+<!-- QR TRACKING START -->
+<script>
+  if (new URLSearchParams(window.location.search).get('qr') === '1') {
+    fetch('/api/ping', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firma: 'Aderhold',
+        zeit: new Date().toLocaleString('de-DE'),
+        geraet: navigator.userAgent.includes('Mobile') ? '📱 Smartphone' : '💻 Desktop'
+      })
+    });
+  }
+</script>
+<!-- QR TRACKING ENDE -->
 
 </body>
 </html>
