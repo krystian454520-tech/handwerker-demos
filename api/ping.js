@@ -10,8 +10,8 @@ export default async function handler(req, res) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: 'tracking@deine-domain.de',
-      to: 'deine@email.de',           // ← deine E-Mail hier
+      from: 'onboarding@resend.dev',
+      to: 'krystian_myszk2@hotmail.de',           // ← deine E-Mail hier
       subject: `📱 QR-Scan: ${firma}`,
       text: `Firma: ${firma}\nZeit: ${zeit}\nGerät: ${geraet}`
     })
