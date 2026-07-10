@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emmig & Buschko Malermeister GmbH – Ihr Maler in Berlin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        anthrazit: '#18181b',
+        'anthrazit-light': '#27272a',
+        orange: { 500: '#f97316', 600: '#ea580c', 700: '#c2410c' }
+      },
+      fontFamily: { sans: ['system-ui','-apple-system','Segoe UI','Roboto','sans-serif'] }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  #mobile-menu { transition: max-height .3s ease, opacity .25s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  #mobile-menu.open { max-height: 480px; opacity: 1; }
+  .btn { transition: background-color .2s, transform .1s; }
+  .btn:active { transform: scale(.97); }
+  /* PARTNER TICKER */
+  .ticker-wrap { overflow: hidden; }
+  .ticker-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
+</head>
+<body class="bg-white font-sans text-anthrazit antialiased">
+
+<!-- ====================================================================
+     TOPBAR
+     ==================================================================== -->
+<div class="bg-anthrazit text-gray-300 text-xs sm:text-sm">
+  <div class="max-w-6xl mx-auto px-4 py-2 flex items-center justify-center gap-6">
+    <!-- FIRMEN_TELEFON_TOPBAR START -->
+    <a href="tel:+493020067222" class="flex items-center gap-1.5 hover:text-orange-500 transition-colors font-medium">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.11.63.24 1.24.4 1.84"/></svg>
+      030 / 200 67 222
+    </a>
+    <!-- FIRMEN_TELEFON_TOPBAR ENDE -->
+    <!-- FIRMEN_EMAIL_TOPBAR START -->
+    <a href="mailto:info@berlins-malermeister.de" class="hidden sm:flex items-center gap-1.5 hover:text-orange-500 transition-colors">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      info@berlins-malermeister.de
+    </a>
+    <!-- FIRMEN_EMAIL_TOPBAR ENDE -->
+  </div>
+</div>
+
+<!-- ====================================================================
+     HEADER / NAVIGATION (STICKY)
+     ==================================================================== -->
+<header class="bg-white sticky top-0 z-50 shadow-sm border-b border-zinc-100">
+  <nav class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- FIRMEN_LOGO START -->
+      <a href="#start" class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-anthrazit rounded-xl flex items-center justify-center flex-shrink-0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="text-anthrazit font-extrabold text-lg leading-tight">Emmig &amp; Buschko Malermeister GmbH<span class="text-orange-600 block text-[11px] font-semibold tracking-wider uppercase">Malermeister · Berlin</span></span>
+      </a>
+      <!-- FIRMEN_LOGO ENDE -->
+      <div class="hidden md:flex items-center gap-7">
+        <!-- NAV_LINKS START -->
+        <a href="#ueber-uns" class="text-zinc-600 hover:text-orange-600 text-sm font-semibold transition-colors">Über uns</a>
+        <a href="#leistungen" class="text-zinc-600 hover:text-orange-600 text-sm font-semibold transition-colors">Leistungen</a>
+        <a href="#ablauf" class="text-zinc-600 hover:text-orange-600 text-sm font-semibold transition-colors">Ablauf</a>
+        <a href="#einblicke" class="text-zinc-600 hover:text-orange-600 text-sm font-semibold transition-colors">Projekte</a>
+        <a href="#kontakt" class="text-zinc-600 hover:text-orange-600 text-sm font-semibold transition-colors">Kontakt</a>
+        <!-- NAV_LINKS ENDE -->
+        <!-- FIRMEN_TELEFON_DESKTOP START -->
+        <a href="tel:+493020067222" class="btn bg-orange-600 hover:bg-orange-700 text-white text-sm font-bold px-5 py-2.5 rounded-lg">📞 Jetzt anrufen</a>
+        <!-- FIRMEN_TELEFON_DESKTOP ENDE -->
+      </div>
+      <button id="burger-btn" class="md:hidden p-2 text-anthrazit" aria-label="Menü öffnen" aria-expanded="false">
+        <svg id="icon-burger" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="icon-close" class="hidden" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-zinc-100">
+    <div class="px-4 py-3 flex flex-col gap-1">
+      <a href="#ueber-uns" class="text-anthrazit py-3 text-base font-semibold border-b border-zinc-100">Über uns</a>
+      <a href="#leistungen" class="text-anthrazit py-3 text-base font-semibold border-b border-zinc-100">Leistungen</a>
+      <a href="#ablauf" class="text-anthrazit py-3 text-base font-semibold border-b border-zinc-100">Ablauf</a>
+      <a href="#einblicke" class="text-anthrazit py-3 text-base font-semibold border-b border-zinc-100">Projekte</a>
+      <a href="#kontakt" class="text-anthrazit py-3 text-base font-semibold border-b border-zinc-100">Kontakt</a>
+      <!-- FIRMEN_TELEFON_MOBIL START -->
+      <a href="tel:+493020067222" class="btn bg-orange-600 text-white text-center font-bold py-3.5 rounded-lg mt-3 text-base">📞 030 / 200 67 222</a>
+      <!-- FIRMEN_TELEFON_MOBIL ENDE -->
+    </div>
+  </div>
+</header>
+
+<!-- ====================================================================
+     HERO
+     ==================================================================== -->
+<section id="start" class="relative bg-anthrazit overflow-hidden">
+  <!-- HERO_BILD START -->
+  <div class="absolute inset-0">
+    <img src="/assets/maler/hero.jpeg" alt="Malerarbeiten Berlin" class="w-full h-full object-cover opacity-40" loading="eager">
+  </div>
+  <!-- HERO_BILD ENDE -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 py-14 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div>
+      <!-- HERO_BADGE START -->
+      <span class="inline-block bg-orange-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">✓ Malermeisterbetrieb seit 2017</span>
+      <!-- HERO_BADGE ENDE -->
+      <!-- HERO_HEADLINE START -->
+      <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-5">
+        Ihr Malermeister in <span class="text-orange-500">Berlin</span> – modern, präzise und zuverlässig
+      </h1>
+      <!-- HERO_HEADLINE ENDE -->
+      <!-- HERO_SUBHEADLINE START -->
+      <p class="text-gray-200 text-lg mb-8 leading-relaxed">
+        Emmig &amp; Buschko Malermeister GmbH – seit 2017 Ihr verlässlicher Partner für Innen- und Außenarbeiten, Tapezieren, Streichen und Lackieren in ganz Berlin.
+      </p>
+      <!-- HERO_SUBHEADLINE ENDE -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#kontakt" class="btn bg-orange-600 hover:bg-orange-700 text-white font-bold text-base px-7 py-4 rounded-xl shadow-xl shadow-orange-600/20 flex items-center justify-center gap-2">
+          Jetzt Angebot anfragen
+        </a>
+        <!-- FIRMEN_CTA_ANRUF START -->
+        <a href="tel:+493020067222" class="btn border-2 border-white text-white font-bold text-base px-7 py-4 rounded-xl hover:bg-white hover:text-anthrazit transition-colors flex items-center justify-center gap-2">
+          030 / 200 67 222
+        </a>
+        <!-- FIRMEN_CTA_ANRUF ENDE -->
+      </div>
+    </div>
+    <div class="hidden md:flex items-center justify-center">
+      <div class="bg-white/10 border border-white/20 rounded-2xl p-8 text-center backdrop-blur-sm">
+        <div class="grid grid-cols-2 gap-6">
+          <div><p class="text-4xl font-extrabold text-orange-500">10+</p><p class="text-gray-300 text-sm mt-1">Jahre Erfahrung</p></div>
+          <div><p class="text-4xl font-extrabold text-orange-500">8.000+</p><p class="text-gray-300 text-sm mt-1">Kunden</p></div>
+          <div><p class="text-4xl font-extrabold text-orange-500">⭐ 5,0</p><p class="text-gray-300 text-sm mt-1">Kundenbewertung</p></div>
+          <div><p class="text-4xl font-extrabold text-orange-500">8</p><p class="text-gray-300 text-sm mt-1">Gewerke</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     PARTNER-LOGO-LEISTE (MIT ENDLOS-LAUFSCHRIFT)
+     ==================================================================== -->
+<section class="bg-zinc-50 py-8 border-b border-zinc-200">
+  <div class="max-w-6xl mx-auto px-4 mb-4">
+    <p class="text-center text-xs font-bold uppercase tracking-widest text-zinc-400">Vertrauen durch Partnerschaft</p>
+  </div>
+  <!-- PARTNER_LOGOS START -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <!-- SET 1 -->
+      <div class="flex items-center gap-10 px-10">
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/4c3a97aa-9972-4b32-9a76-1b6ab2c68355/preview" alt="Bautzentrum Mehring" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/e93246bd-dfe8-4d95-87c5-6e7b61b98295/preview" alt="Bückmann Trocknungstechnik" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/5246dd29-6579-418f-af92-4306051b0edd/preview" alt="Mega Gruppe" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/347279a9-b5ba-42bd-b423-8d016ff20bed/preview" alt="Sven Kreling Haustechnik" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/e188f446-80ef-45f0-8190-ea7876ca9366/preview" alt="Haberland Wasserschadenbeseitigung" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/4f259a7e-daa1-46f8-99ba-d523be7f6614/preview" alt="Partner" class="h-8 w-auto object-contain">
+        </div>
+      </div>
+      <!-- SET 2 (identische Kopie für nahtlosen Loop) -->
+      <div class="flex items-center gap-10 px-10">
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/4c3a97aa-9972-4b32-9a76-1b6ab2c68355/preview" alt="Bautzentrum Mehring" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/e93246bd-dfe8-4d95-87c5-6e7b61b98295/preview" alt="Bückmann Trocknungstechnik" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/5246dd29-6579-418f-af92-4306051b0edd/preview" alt="Mega Gruppe" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/347279a9-b5ba-42bd-b423-8d016ff20bed/preview" alt="Sven Kreling Haustechnik" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/e188f446-80ef-45f0-8190-ea7876ca9366/preview" alt="Haberland Wasserschadenbeseitigung" class="h-8 w-auto object-contain">
+        </div>
+        <div class="bg-white border border-zinc-200 rounded-lg px-5 py-3 shadow-sm flex items-center h-16">
+          <img src="https://onecdn.io/media/4f259a7e-daa1-46f8-99ba-d523be7f6614/preview" alt="Partner" class="h-8 w-auto object-contain">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- PARTNER_LOGOS ENDE -->
+</section>
+
+<!-- ====================================================================
+     ÜBER UNS
+     ==================================================================== -->
+<section id="ueber-uns" class="py-16 md:py-24 px-4 bg-white">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- UEBER_UNS_BILD START -->
+    <div class="order-2 md:order-1 rounded-2xl overflow-hidden shadow-xl h-72 md:h-[420px] bg-zinc-100 flex items-center justify-center">
+      <img src="/assets/maler/ueber%20uns.jpg" alt="Malermeisterin Robby Emmig &amp; Georg Buschko bei der Arbeit" class="w-full h-full object-contain">
+    </div>
+    <!-- UEBER_UNS_BILD ENDE -->
+    <div class="order-1 md:order-2">
+      <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">Über uns</p>
+      <!-- UEBER_UNS_TITEL START -->
+      <h2 class="text-3xl font-extrabold text-anthrazit mb-5">Ihre Malermeisterei aus Berlin – seit 2017</h2>
+      <!-- UEBER_UNS_TITEL ENDE -->
+      <!-- UEBER_UNS_TEXT START -->
+      <p class="text-zinc-600 leading-relaxed mb-3">Die Emmig &amp; Buschko Malermeister GmbH, gegründet von Malermeisterin Robby Emmig &amp; Georg Buschko, unterstützt seit 2017 Kunden aus dem Privat- und Geschäftskundenbereich in ganz Berlin bei der Umsetzung ihrer Wünsche und Projekte.</p>
+      <p class="text-zinc-600 leading-relaxed mb-8">Unser Team arbeitet präzise, sauber und termingerecht – von der ersten Beratung bis zur finalen Übergabe. Wir sind stolz auf jedes abgeschlossene Projekt.</p>
+      <!-- UEBER_UNS_TEXT ENDE -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#kontakt" class="btn bg-anthrazit hover:bg-anthrazit-light text-white font-bold text-sm px-6 py-3.5 rounded-lg text-center">Kontakt aufnehmen</a>
+        <a href="tel:+493020067222" class="btn border-2 border-anthrazit text-anthrazit font-bold text-sm px-6 py-3.5 rounded-lg text-center hover:bg-anthrazit hover:text-white transition-colors">030 / 200 67 222</a>
+      </div>
+      <!-- UEBER_UNS_KENNZAHLEN START -->
+      <div class="grid grid-cols-2 gap-6 mt-10 pt-8 border-t border-zinc-200">
+        <div><p class="text-3xl font-extrabold text-orange-600">10+</p><p class="text-zinc-500 text-sm mt-1">Jahre Erfahrung</p></div>
+        <div><p class="text-3xl font-extrabold text-orange-600">8.000+</p><p class="text-zinc-500 text-sm mt-1">Zufriedene Kunden</p></div>
+        <div><p class="text-3xl font-extrabold text-orange-600">⭐ 5,0</p><p class="text-zinc-500 text-sm mt-1">Google-Bewertung</p></div>
+        <div><p class="text-3xl font-extrabold text-orange-600">8</p><p class="text-zinc-500 text-sm mt-1">Leistungsbereiche</p></div>
+      </div>
+      <!-- UEBER_UNS_KENNZAHLEN ENDE -->
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     LEISTUNGEN
+     ==================================================================== -->
+<section id="leistungen" class="py-16 md:py-24 px-4 bg-zinc-50">
+  <div class="max-w-6xl mx-auto">
+    <!-- LEISTUNGEN_TITEL START -->
+    <div class="mb-12 max-w-2xl">
+      <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">Leistungen</p>
+      <h2 class="text-3xl font-extrabold text-anthrazit">Professionelle Malerarbeiten</h2>
+      <p class="text-zinc-500 mt-2">Von der Innenrenovierung bis zur Fassade – wir bieten alle Malerleistungen aus einer Hand.</p>
+    </div>
+    <!-- LEISTUNGEN_TITEL ENDE -->
+    <!-- LEISTUNGEN_GRID START -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- LEISTUNG_1 START -->
+      <div class="bg-white rounded-xl overflow-hidden border border-zinc-200 hover:shadow-lg transition-shadow">
+        <img src="/assets/maler/leistung1.jpg" alt="Innenarbeiten Emmig &amp; Buschko Malermeister GmbH" class="w-full h-48 object-cover" style="object-position: center 35%">
+        <div class="p-5">
+          <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="font-bold text-anthrazit mb-1.5">Innenarbeiten</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Streichen, Spachteln, Tapezieren – wir gestalten Ihre Wände und Decken professionell und sauber. Individuell auf Ihre Wünsche abgestimmt.</p>
+        </div>
+      </div>
+      <!-- LEISTUNG_1 ENDE -->
+      <!-- LEISTUNG_2 START -->
+      <div class="bg-white rounded-xl overflow-hidden border border-zinc-200 hover:shadow-lg transition-shadow">
+        <img src="/assets/maler/leistung4.jpg" alt="Außenarbeiten Fassadenanstrich Berlin" class="w-full h-48 object-cover" style="object-position: center 40%">
+        <div class="p-5">
+          <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+          </div>
+          <h3 class="font-bold text-anthrazit mb-1.5">Außenarbeiten</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Fassadenanstrich, Lackieren und Lasieren im Außenbereich. Wir schützen und verschönern Ihr Gebäude – dauerhaft und wetterfest.</p>
+        </div>
+      </div>
+      <!-- LEISTUNG_2 ENDE -->
+      <!-- LEISTUNG_3 START -->
+      <div class="col-span-2 sm:col-span-1 bg-white rounded-xl overflow-hidden border border-zinc-200 hover:shadow-lg transition-shadow">
+        <img src="/assets/maler/leistung2.jpg" alt="Lackierarbeiten Berlin" class="w-full h-48 object-cover" style="object-position: center 20%">
+        <div class="p-5">
+          <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="font-bold text-anthrazit mb-1.5">Lackieren &amp; Lasieren</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Türen, Fenster, Heizkörper und Holzelemente professionell lackiert oder lasiert – für elegante Optik und lange Haltbarkeit.</p>
+        </div>
+      </div>
+      <!-- LEISTUNG_3 ENDE -->
+      <div class="hidden sm:block bg-white rounded-xl p-5 border border-zinc-200 hover:shadow-lg transition-shadow">
+        <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-3"><svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Spachteln</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Unebenheiten, Risse und Löcher professionell ausgebessert. Die Basis für makellose Wände und Decken.</p>
+      </div>
+      <div class="hidden sm:block bg-white rounded-xl p-5 border border-zinc-200 hover:shadow-lg transition-shadow">
+        <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-3"><svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Tapezieren</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Von klassischer Raufaser über moderne Designtapeten bis Fototapeten – wir bringen Ihre Wände perfekt zur Geltung.</p>
+      </div>
+      <div class="hidden sm:block bg-white rounded-xl p-5 border border-zinc-200 hover:shadow-lg transition-shadow">
+        <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-3"><svg width="20" height="20" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Schimmel &amp; Wasserschäden</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Professionelle Schimmelentfernung und Instandsetzung nach Wasserschäden. Nachhaltig und für ein gesundes Raumklima.</p>
+      </div>
+    </div>
+    <!-- LEISTUNGEN_GRID ENDE -->
+    <div class="text-center mt-10">
+      <a href="tel:+493020067222" class="btn inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold px-7 py-3.5 rounded-lg">030 / 200 67 222 anrufen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     ABLAUF (4 SCHRITTE)
+     ==================================================================== -->
+<section id="ablauf" class="relative py-16 md:py-24 px-4 overflow-hidden">
+  <!-- ABLAUF_BILD START -->
+  <div class="absolute inset-0">
+    <img src="/assets/maler/unser%20ablauf.jpeg" alt="Malerarbeiten Hintergrund" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-anthrazit/80"></div>
+  </div>
+  <!-- ABLAUF_BILD ENDE -->
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <!-- ABLAUF_TITEL START -->
+    <div class="mb-12 max-w-2xl">
+      <p class="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">Angebot</p>
+      <h2 class="text-3xl font-extrabold text-white">Von der Anfrage bis zum perfekten Ergebnis</h2>
+    </div>
+    <!-- ABLAUF_TITEL ENDE -->
+    <!-- ABLAUF_SCHRITTE START -->
+    <div class="bg-white rounded-2xl p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div class="w-12 h-12 bg-orange-600 text-white rounded-lg flex items-center justify-center font-extrabold text-lg mb-4">1</div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Anfrage stellen</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Kontaktieren Sie uns per Telefon oder Formular. Wir melden uns schnell und unkompliziert zurück.</p>
+      </div>
+      <div>
+        <div class="w-12 h-12 bg-orange-600 text-white rounded-lg flex items-center justify-center font-extrabold text-lg mb-4">2</div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Vor-Ort-Begehung</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Robby Emmig &amp; Georg Buschko kommt persönlich vorbei, berät Sie und erfasst alle Details Ihres Projekts.</p>
+      </div>
+      <div>
+        <div class="w-12 h-12 bg-orange-600 text-white rounded-lg flex items-center justify-center font-extrabold text-lg mb-4">3</div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Transparentes Angebot</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Sie erhalten ein nachvollziehbares Festpreisangebot – ohne versteckte Kosten, fair und ehrlich.</p>
+      </div>
+      <div>
+        <div class="w-12 h-12 bg-orange-600 text-white rounded-lg flex items-center justify-center font-extrabold text-lg mb-4">4</div>
+        <h3 class="font-bold text-anthrazit mb-1.5">Saubere Umsetzung</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed">Pünktlich, sauber und präzise – wir führen Ihren Auftrag professionell aus und hinterlassen keine Spuren.</p>
+      </div>
+    </div>
+    <!-- ABLAUF_SCHRITTE ENDE -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     WARUM WIR
+     ==================================================================== -->
+<section class="py-16 md:py-24 px-4 bg-white">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+    <div>
+      <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">Warum wir</p>
+      <h2 class="text-3xl font-extrabold text-anthrazit mb-8">Was uns als Malerbetrieb in Berlin besonders macht</h2>
+      <!-- WARUM_WIR_PUNKTE START -->
+      <div class="space-y-5">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div><p class="font-bold text-anthrazit">Meisterhafte Qualität</p><p class="text-zinc-500 text-sm mt-0.5">Als Malermeisterbetrieb setzen wir auf hochwertige Materialien und professionelle Verarbeitung – Präzision bis ins kleinste Detail.</p></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><p class="font-bold text-anthrazit">Pünktlichkeit &amp; Termintreue</p><p class="text-zinc-500 text-sm mt-0.5">Wir halten Zeitpläne ein und garantieren eine reibungslose Abwicklung – von der Planung bis zur Fertigstellung.</p></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div><p class="font-bold text-anthrazit">Faire Festpreise</p><p class="text-zinc-500 text-sm mt-0.5">Transparent und nachvollziehbar – Sie erhalten vorab ein verbindliches Angebot ohne versteckte Kosten.</p></div>
+        </div>
+        <div class="hidden sm:flex items-start gap-4">
+          <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><p class="font-bold text-anthrazit">Sauber &amp; umweltfreundlich</p><p class="text-zinc-500 text-sm mt-0.5">Wir arbeiten sauber, schützen Ihre Einrichtung und setzen auf umweltfreundliche Farben und Techniken.</p></div>
+        </div>
+      </div>
+      <!-- WARUM_WIR_PUNKTE ENDE -->
+    </div>
+    <!-- GESCHAEFTSFUEHRER START -->
+    <div class="bg-anthrazit rounded-2xl p-8 flex flex-col mt-4 md:mt-0">
+      <div class="rounded-xl overflow-hidden h-52 mb-6">
+        <img src="/assets/maler/warum%20wir%20ansprechpartner.jpg" alt="Malermeisterin Robby Emmig &amp; Georg Buschko" class="w-full h-full object-cover object-top">
+      </div>
+      <p class="text-orange-500 font-bold text-xs uppercase tracking-widest mb-1">Ihr persönlicher Ansprechpartner</p>
+      <!-- GESCHAEFTSFUEHRER_NAME START -->
+      <h3 class="text-xl font-bold text-white mb-1">Robby Emmig &amp; Georg Buschko</h3>
+      <p class="text-gray-400 text-sm mb-4">Malermeisterin &amp; Gründerin, Emmig &amp; Buschko Malermeister GmbH</p>
+      <!-- GESCHAEFTSFUEHRER_NAME ENDE -->
+      <!-- GESCHAEFTSFUEHRER_ZITAT START -->
+      <p class="text-gray-300 text-sm leading-relaxed mb-5 flex-1">„Ich unterstütze meine Kunden seit 2017 dabei, ihre Wünsche und Visionen umzusetzen. Erst wenn Sie glücklich und zufrieden mit dem Ergebnis sind, ist meine Mission erfüllt."</p>
+      <!-- GESCHAEFTSFUEHRER_ZITAT ENDE -->
+      <a href="tel:+493020067222" class="btn bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm px-6 py-3.5 rounded-lg text-center">030 / 200 67 222</a>
+    </div>
+    <!-- GESCHAEFTSFUEHRER ENDE -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     KUNDENBEWERTUNGEN
+     ==================================================================== -->
+<section class="py-16 px-4 bg-zinc-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">Kundenstimmen</p>
+      <h2 class="text-3xl font-extrabold text-anthrazit">Was Kunden über uns sagen</h2>
+      <p class="text-zinc-500 mt-2">⭐⭐⭐⭐⭐ &nbsp;5,0 / 5 – Aus über 80 Google-Bewertungen</p>
+    </div>
+    <!-- BEWERTUNGEN START -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div class="bg-white rounded-xl p-6 border border-zinc-200">
+        <p class="text-orange-500 mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-3">„Wir sind sehr zufrieden. Die Arbeiten wurden sauber und präzise ausgeführt. Der Teil des Teams, den wir kennengelernt haben, war sehr nett. Klare Empfehlung!"</p>
+        <p class="font-bold text-anthrazit text-sm">Alena B.</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 border border-zinc-200">
+        <p class="text-orange-500 mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-3">„Top Leistung, top Arbeit. Frau Aderhold berät wirklich sehr kompetent. Wir haben die Firma bereits dreimal beauftragt und waren immer sehr zufrieden."</p>
+        <p class="font-bold text-anthrazit text-sm">Mandy S.</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 border border-zinc-200">
+        <p class="text-orange-500 mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="text-zinc-600 text-sm leading-relaxed mb-3">„So macht renovieren Spaß! Sehr freundliches Team, wirklich alles wird sorgsam abgeklebt und das bei einem sehr guten Preis-Leistungsverhältnis."</p>
+        <p class="font-bold text-anthrazit text-sm">Uwe G.</p>
+      </div>
+    </div>
+    <!-- BEWERTUNGEN ENDE -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     VORHER / NACHHER GALERIE
+     ==================================================================== -->
+<section id="einblicke" class="py-16 md:py-24 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <!-- GALERIE_TITEL START -->
+    <div class="mb-12 max-w-2xl">
+      <p class="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">Projekte</p>
+      <h2 class="text-3xl font-extrabold text-anthrazit mb-3">Ergebnisse aus Mitte &amp; Prenzlauer Berg</h2>
+      <p class="text-zinc-500">Sehen Sie selbst, wie wir Berliner Wohnungen und Gewerberäume in neuem Glanz erstrahlen lassen.</p>
+    </div>
+    <!-- GALERIE_TITEL ENDE -->
+    <!-- GALERIE_PROJEKTE START -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div class="bg-zinc-50 rounded-2xl overflow-hidden border border-zinc-200">
+        <div class="relative">
+          <img src="/assets/maler/Vorher%20Nachher%201.jpg" alt="Vorher Nachher Altbauwohnung Prenzlauer Berg" class="w-full h-64 object-cover object-center">
+          <span class="absolute top-2 left-2 bg-anthrazit/80 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Vorher</span>
+          <span class="absolute top-2 right-2 bg-orange-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Nachher</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-anthrazit">Altbauwohnung Prenzlauer Berg</h3>
+          <p class="text-zinc-500 text-sm">Wände &amp; Decken – komplett gespachtelt, grundiert und gestrichen</p>
+        </div>
+      </div>
+      <div class="bg-zinc-50 rounded-2xl overflow-hidden border border-zinc-200">
+        <div class="relative">
+          <img src="/assets/maler/Vorher%20Nachher%202.jpg" alt="Vorher Nachher Dachgeschoss Charlottenburg" class="w-full h-64 object-cover object-center">
+          <span class="absolute top-2 left-2 bg-anthrazit/80 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Vorher</span>
+          <span class="absolute top-2 right-2 bg-orange-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Nachher</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-anthrazit">Dachgeschoss Charlottenburg</h3>
+          <p class="text-zinc-500 text-sm">Komplettrenovierung – Wände, Decken &amp; neuer Parkettboden</p>
+        </div>
+      </div>
+    </div>
+    <!-- GALERIE_PROJEKTE ENDE -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     TÄTIGKEITSORTE
+     ==================================================================== -->
+<section class="py-12 px-4 bg-orange-600">
+  <div class="max-w-6xl mx-auto text-center">
+    <p class="text-white/80 font-bold text-sm uppercase tracking-widest mb-2">Tätigkeitsorte</p>
+    <h2 class="text-2xl font-extrabold text-white mb-4">Wir arbeiten in ganz Berlin</h2>
+    <!-- TAETIGKEITSORTE START -->
+    <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Mitte</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Prenzlauer Berg</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Charlottenburg</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Kreuzberg</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Friedrichshain</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Schöneberg</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Wedding</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Pankow</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Lichtenberg</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Neukölln</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Tempelhof</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Spandau</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Reinickendorf</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Steglitz</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Zehlendorf</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Treptow</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Köpenick</span>
+      <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Marzahn-Hellersdorf</span>
+    </div>
+    <!-- TAETIGKEITSORTE ENDE -->
+  </div>
+</section>
+
+<!-- ====================================================================
+     KONTAKT
+     ==================================================================== -->
+<section id="kontakt" class="py-16 md:py-24 px-4 bg-anthrazit">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <p class="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">Kontakt</p>
+        <h2 class="text-3xl font-extrabold text-white mb-3">Jetzt Angebot einholen</h2>
+        <p class="text-gray-400 mb-8">Wir melden uns innerhalb von 24 Stunden zurück – pünktlich, wie unsere Arbeit.</p>
+        <!-- KONTAKT_TELEFON START -->
+        <a href="tel:+493020067222" class="flex items-center gap-4 bg-orange-600 hover:bg-orange-700 rounded-xl p-4 mb-3 transition-colors">
+          <div class="w-11 h-11 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div><p class="text-white font-bold text-lg">030 / 200 67 222</p><p class="text-white/70 text-xs">Mo–Fr 8–18 Uhr</p></div>
+        </a>
+        <!-- KONTAKT_TELEFON ENDE -->
+        <!-- KONTAKT_EMAIL START -->
+        <a href="mailto:info@berlins-malermeister.de" class="flex items-center gap-4 bg-white/10 border border-white/10 rounded-xl p-4 mb-3 hover:bg-white/15 transition-colors">
+          <div class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <p class="text-white font-semibold text-sm">info@berlins-malermeister.de</p>
+        </a>
+        <!-- KONTAKT_EMAIL ENDE -->
+        <!-- KONTAKT_ADRESSE START -->
+        <div class="flex items-center gap-4 bg-white/10 border border-white/10 rounded-xl p-4">
+          <div class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><p class="text-white font-semibold text-sm">Berlin-Mitte</p><p class="text-white/60 text-xs">Mitte · Wir kommen berlinweit zu Ihnen</p></div>
+        </div>
+        <!-- KONTAKT_ADRESSE ENDE -->
+      </div>
+      <!-- KONTAKT_FORMULAR START -->
+      <div class="bg-white rounded-2xl p-8">
+        <h3 class="text-xl font-bold text-anthrazit mb-2">Angebot anfragen</h3>
+        <p class="text-zinc-500 text-sm mb-6">Kostenloses, unverbindliches Angebot – wir melden uns schnell zurück.</p>
+        <form class="flex flex-col gap-4" onsubmit="handleFormSubmit(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="text-zinc-500 text-xs font-semibold uppercase tracking-wider block mb-1.5" for="kf-vorname">Vorname</label>
+              <input id="kf-vorname" type="text" placeholder="Maria" required class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+            </div>
+            <div>
+              <label class="text-zinc-500 text-xs font-semibold uppercase tracking-wider block mb-1.5" for="kf-nachname">Nachname</label>
+              <input id="kf-nachname" type="text" placeholder="Mustermann" required class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+            </div>
+          </div>
+          <div>
+            <label class="text-zinc-500 text-xs font-semibold uppercase tracking-wider block mb-1.5" for="kf-telefon">Telefonnummer <span class="text-orange-600">*</span></label>
+            <input id="kf-telefon" type="tel" placeholder="030 / 123 456" required pattern="[0-9 +()/-]{6,}" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+          </div>
+          <div>
+            <label class="text-zinc-500 text-xs font-semibold uppercase tracking-wider block mb-1.5" for="kf-email">E-Mail</label>
+            <input id="kf-email" type="email" placeholder="maria@beispiel.de" required class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+          </div>
+          <div>
+            <label class="text-zinc-500 text-xs font-semibold uppercase tracking-wider block mb-1.5" for="kf-nachricht">Nachricht</label>
+            <textarea id="kf-nachricht" rows="3" placeholder="Welche Malerarbeiten benötigen Sie?" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 resize-none"></textarea>
+          </div>
+          <label class="flex items-start gap-2.5 text-zinc-500 text-xs leading-relaxed cursor-pointer">
+            <input type="checkbox" required class="mt-0.5 flex-shrink-0">
+            Ich habe die <a href="#datenschutz" class="underline text-anthrazit ml-1">Datenschutzhinweise</a>&nbsp;gelesen und bin einverstanden.
+          </label>
+          <button type="submit" id="kf-submit" class="btn w-full bg-anthrazit hover:bg-anthrazit-light text-white font-extrabold text-base py-4 rounded-xl mt-1">
+            Anfrage absenden
+          </button>
+        </form>
+      </div>
+      <!-- KONTAKT_FORMULAR ENDE -->
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     FOOTER
+     ==================================================================== -->
+<footer class="bg-zinc-100 pt-16 pb-8 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 pb-12 border-b border-zinc-300">
+      <div>
+        <div class="w-14 h-14 bg-anthrazit rounded-xl flex items-center justify-center mb-3">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <!-- FOOTER_FIRMENNAME START -->
+        <p class="text-anthrazit font-bold text-sm mt-2">Emmig &amp; Buschko Malermeister GmbH</p>
+        <p class="text-zinc-500 text-xs mt-1">Nöldnerstr. 5 · 10317 Berlin</p>
+        <!-- FOOTER_FIRMENNAME ENDE -->
+      </div>
+      <div>
+        <h4 class="font-bold text-anthrazit text-sm uppercase tracking-wider mb-4">Leistungen</h4>
+        <!-- FOOTER_LEISTUNGEN START -->
+        <ul class="space-y-2 text-sm text-zinc-600">
+          <li><a href="#leistungen" class="hover:text-orange-600 transition-colors">Innenarbeiten</a></li>
+          <li><a href="#leistungen" class="hover:text-orange-600 transition-colors">Außenarbeiten</a></li>
+          <li><a href="#leistungen" class="hover:text-orange-600 transition-colors">Lackieren &amp; Lasieren</a></li>
+          <li><a href="#leistungen" class="hover:text-orange-600 transition-colors">Tapezieren</a></li>
+          <li><a href="#leistungen" class="hover:text-orange-600 transition-colors">Spachteln</a></li>
+        </ul>
+        <!-- FOOTER_LEISTUNGEN ENDE -->
+      </div>
+      <div>
+        <h4 class="font-bold text-anthrazit text-sm uppercase tracking-wider mb-4">Rechtliches</h4>
+        <!-- FOOTER_LINKS START -->
+        <ul class="space-y-2 text-sm text-zinc-600">
+          <li><a href="#impressum" class="hover:text-orange-600 transition-colors">Impressum</a></li>
+          <li><a href="#datenschutz" class="hover:text-orange-600 transition-colors">Datenschutzhinweise</a></li>
+        </ul>
+        <!-- FOOTER_LINKS ENDE -->
+      </div>
+      <div>
+        <h4 class="font-bold text-anthrazit text-sm uppercase tracking-wider mb-4">Kontakt</h4>
+        <!-- FOOTER_KONTAKT START -->
+        <ul class="space-y-2 text-sm text-zinc-600">
+          <li><a href="tel:+493020067222" class="hover:text-orange-600 transition-colors">030 / 200 67 222</a></li>
+          <li><a href="mailto:info@berlins-malermeister.de" class="hover:text-orange-600 transition-colors">info@berlins-malermeister.de</a></li>
+          <li><span>Berlin-Mitte</span></li>
+        </ul>
+        <!-- FOOTER_KONTAKT ENDE -->
+      </div>
+    </div>
+    <!-- FOOTER_COPYRIGHT START -->
+    <p class="text-center text-zinc-400 text-xs pt-6">© 2026 Emmig &amp; Buschko Malermeister GmbH · Robby Emmig &amp; Georg Buschko · Alle Rechte vorbehalten.</p>
+    <!-- FOOTER_COPYRIGHT ENDE -->
+  </div>
+</footer>
+
+<!-- ====================================================================
+     JAVASCRIPT
+     ==================================================================== -->
+<script>
+(function () {
+  var burgerBtn = document.getElementById('burger-btn');
+  var menu = document.getElementById('mobile-menu');
+  var iconBurger = document.getElementById('icon-burger');
+  var iconClose = document.getElementById('icon-close');
+  function closeMenu() {
+    menu.classList.remove('open');
+    iconBurger.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    burgerBtn.setAttribute('aria-expanded', 'false');
+  }
+  function toggleMenu() {
+    var isOpen = menu.classList.toggle('open');
+    iconBurger.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+    burgerBtn.setAttribute('aria-expanded', String(isOpen));
+  }
+  burgerBtn.addEventListener('click', toggleMenu);
+  document.querySelectorAll('#mobile-menu a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+})();
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('kf-submit');
+  btn.textContent = '✓ Anfrage gesendet – wir melden uns bald!';
+  btn.classList.remove('bg-anthrazit', 'hover:bg-anthrazit-light');
+  btn.classList.add('bg-green-600');
+  btn.disabled = true;
+}
+</script>
+<!-- STICKY MOBILE CTA (nur auf Smartphones sichtbar) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-zinc-200 px-4 py-3 shadow-2xl">
+  <a href="tel:+493020067222" class="btn flex items-center justify-center gap-2 w-full bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-base py-3.5 rounded-xl">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    030 / 200 67 222 – Jetzt anrufen
+  </a>
+</div>
+<!-- Abstand damit Footer nicht hinter sticky bar verschwindet -->
+<div class="h-20 md:hidden"></div>
+
+</body>
+</html>
